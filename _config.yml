@@ -27,7 +27,7 @@ author:
   bio              : #"Short biography for the left-hand sidebar"
   location         : "Stony Brook, NY"
   employer         : "Stony Brook University"
-  uri              : "https://starc52.github.io"
+  uri              : "/about"
   email            : "schakkera[at]cs.stonybrook.edu"
 
   # Academic websites
