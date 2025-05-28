@@ -1,0 +1,363 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+    body {
+        font-family: Georgia, serif;
+        font-weight:300;
+        font-size:18px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1100px;
+    }
+
+    h1 {
+        font-size:32px;
+        font-weight:300;
+    }
+
+    .disclaimerbox {
+        background-color: #eee;
+        border: 1px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+        padding: 20px;
+    }
+
+    video.header-vid {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    img.header-img {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    img.rounded {
+        border: 1px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    a:link,a:visited
+    {
+        color: #1367a7;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #208799;
+    }
+
+    td.dl-link {
+        height: 160px;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+        0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+        5px 5px 0 0px #fff, /* The second layer */
+        5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+        10px 10px 0 0px #fff, /* The third layer */
+        10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+        15px 15px 0 0px #fff, /* The fourth layer */
+        15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+        20px 20px 0 0px #fff, /* The fifth layer */
+        20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+        25px 25px 0 0px #fff, /* The fifth layer */
+        25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+
+    .paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+        0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+
+
+    .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+        0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+        5px 5px 0 0px #fff, /* The second layer */
+        5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+        10px 10px 0 0px #fff, /* The third layer */
+        10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 30px;
+        margin-bottom: 5px;
+    }
+
+    .vert-cent {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    hr
+    {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+</style>
+
+<html>
+<head>
+    <title>Low Rank Head Avatars Personalization with Registers</title>
+    <meta property="og:image" content="Path to my teaser.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+    <meta property="og:title" content="Creative and Descriptive Paper Title." />
+    <meta property="og:description" content="Paper description." />
+
+    <!-- Get from Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src=""></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-75863369-6');
+    </script>
+</head>
+
+<body>
+    <br>
+    <center>
+        <span style="font-size:36px">Low Rank Head Avatar Personalization <br> with Registers</span><br></br>
+        <table align=center width=1800px>
+            <table align=center width=1800px>
+                <tr>
+                    <td align=center width=300px>
+                        <center>
+                            <span style="font-size:24px">Sai Tanmay Reddy Chakkera</a></span>
+                        </center>
+                    </td>
+                    <td align=center width=300px>
+                        <center>
+                            <span style="font-size:24px">Aggelina Chatziagapi</a></span>
+                        </center>
+                    </td>
+                    <td align=center width=300px>
+                        <center>
+                            <span style="font-size:24px">Md Moniruzzaman</a></span>
+                        </center>
+                    </td>
+                    <td align=center width=300px>
+                        <center>
+                            <span style="font-size:24px">Chen-Ping Yu</a></span>
+                        </center>
+                    </td>
+                    <td align=center width=300px>
+                        <center>
+                            <span style="font-size:24px">Yi-Hsuan Tsai</a></span>
+                        </center>
+                    </td>
+                    <td align=center width=300px>
+                        <center>
+                            <span style="font-size:24px">Dimitris Samaras</a></span>
+                        </center>
+                    </td>
+                </tr>
+            </table><br></br>
+            <table align=center width=600px>
+                <tr>
+                    <td align=center width=600px>
+                        <center>
+                            <span style="font-size:24px">Stony Brook University</a></span>
+                        </center>
+                    </td>
+                    <td align=center width=900px>
+                        <center>
+                            <span style="font-size:24px">Atmanity Inc.</a></span>
+                        </center>
+                    </td>
+                    <td align=center width=300px>
+                        <center>
+                            <span style="font-size:24px">Stony Brook University</a></span>
+                        </center>
+                    </td>
+                </tr>
+            </table><br></br>
+<!--            <table align=center width=1800px>-->
+<!--                <tr>-->
+<!--                    <td align=center width=300px>-->
+<!--                        <center>-->
+<!--                            <span style="font-size:24px"><i>arXiv preprint</i></a></span>-->
+<!--                        </center>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </table><br></br>-->
+            <table align=center width=250px>
+                <tr>
+                    <td align=center width=120px>
+                        <center>
+                            <span style="font-size:24px"><a href="https://arxiv.org/abs/2409.12156">[Paper]</a></span>
+                        </center>
+                    </td>
+                    <td align=center width=120px>
+                        <center>
+                            <span style="font-size:24px">[GitHub]</a></span><br>
+                        </center>
+                    </td>
+                </tr>
+            </table><br></br>
+        </table>
+    </center>
+
+    <center>
+        <table align=center width=1024px>
+            <tr>
+                <td width=260px>
+                    <center>
+                        <img class="round" style="width:1024px" src="teaser.png"/>
+                    </center>
+                </td>
+            </tr>
+        </table>
+        <!-- <table align=center width=850px>
+            <tr>
+                <td>
+                    This was a template originally made for <a href="http://richzhang.github.io/colorization/">Colorful Image Colorization</a>. The code can be found in this <a href="https://github.com/richzhang/webpage-template">repository</a>.
+                </td>
+            </tr>
+        </table> -->
+    </center>
+
+    <hr>
+
+    <table align=center width=1024px>
+        <center><h1>Abstract</h1></center>
+        <tr>
+            <td>
+                <p style="text-align: center">We introduce a novel method for low-rank personalization of a generic model for head avatar generation. Prior work proposes generic models that achieve high-quality face animation by leveraging large-scale datasets of multiple identities. However, such generic models usually fail to synthesize unique identity-specific details, since they learn a general domain prior. To adapt to specific subjects, we find that it is still challenging to capture high-frequency facial details via popular solutions like low-rank adaptation (LoRA). This motivates us to propose a specific architecture, a Register Module, that enhances the performance of LoRA, while requiring only a small number of parameters to adapt to an unseen identity. Our module is applied to intermediate features of a pre-trained model, storing and re-purposing information in a learnable 3D feature space. To demonstrate the efficacy of our personalization method, we collect a dataset of talking videos of individuals with distinctive facial details, such as wrinkles and tattoos. Our approach faithfully captures unseen faces, outperforming existing methods quantitatively and qualitatively. We will release the code, models, and dataset to the public.</p>
+
+            </td>
+        </tr>
+    </table>
+    <br>
+
+  <hr>
+    <center><h1>Video</h1></center>
+     <p align="center">
+        <iframe width="660" height="395" src="https://www.youtube.com/embed/iTlW1HyxFDQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen align="center"></iframe>
+    </p>
+<!--     <table align=center width=800px>
+        <br>
+        <tr>
+            <center>
+                <span style="font-size:28px"><a href=''>[Slides]</a>
+                </span>
+            </center>
+        </tr>
+    </table>
+    <hr>
+
+    <center><h1>Code</h1></center>
+
+    <table align=center width=420px>
+        <center>
+            <tr>
+                <td>
+                </td>
+            </tr>
+        </center>
+    </table>
+    <table align=center width=400px>
+        <tr>
+            <td align=center width=400px>
+                <center>
+                    <td><img class="round" style="width:450px" src="./resources/method_diagram.png"/></td>
+                </center>
+            </td>
+        </tr>
+    </table>
+    <table align=center width=850px>
+        <center>
+            <tr>
+                <td>
+                    Short description if wanted
+                </td>
+            </tr>
+        </center>
+    </table>
+    <table align=center width=800px>
+        <br>
+        <tr><center>
+            <span style="font-size:28px">&nbsp;<a href='https://github.com/richzhang/webpage-template'>[GitHub]</a>
+            </center>
+        </span>
+    </table> -->
+<!--    <br>-->
+<!--    <hr>-->
+    <!-- <table align=center width=450px>
+        <center><h1>Paper and Supplementary Material</h1></center>
+        <tr>
+            <td><a href=""><img class="layered-paper-big" style="height:175px" src="./resources/paper.png"/></a></td>
+            <td><span style="font-size:14pt">F. Author, S. Author, T. Author.<br>
+                <b>Creative and Descriptive Paper Title.</b><br>
+                In Conference, 20XX.<br>
+                (hosted on <a href="">ArXiv</a>)<br>
+                (<a href="./resources/camera-ready.pdf">camera ready</a>)<br>
+                <span style="font-size:4pt"><a href=""><br></a>
+                </span>
+            </td>
+        </tr>
+    </table> -->
+<!--    <table align=center width=900px>-->
+<!--       <center><h1>Method</h1></center>-->
+<!--        <tr>-->
+<!--            <td><img style="width:900px" src="DetIDR_Full_Method.png">-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
+    <br>
+<!--    <hr>-->
+<!--    <table align=center width=1024px>-->
+<!--       <center><h1>3D Reconstructions</h1></center>-->
+<!--        <tr>-->
+<!--            <td><img style="width:1024px" src="example1.png">-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+
+<!--     <table align=center width=600px>
+        <tr>
+            <td><span style="font-size:14pt"><center>
+                <a href="./resources/bibtex.txt">[Bibtex]</a>
+            </center></td>
+        </tr>
+    </table>
+ -->
+    <hr>
+    <br>
+
+    <table align=center width=1024>
+        <tr>
+            <td width=400px>
+                <left>
+                    <center><h1>Acknowledgements</h1></center>
+                    <p style="text-align: center">This work was supported in part by Amazon Prime Video and a grant from the CDC/NIOSH (U01 OH012476).</p>
+                </left>
+            </td>
+        </tr>
+    </table>
+
+<br>
+</body>
+</html>
