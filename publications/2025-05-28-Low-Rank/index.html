@@ -239,18 +239,19 @@
         <center><h1>Abstract</h1></center>
         <tr>
             <td>
-                <p style="text-align: center">We introduce a novel method for low-rank personalization of a generic model for head avatar generation. Prior work proposes generic models that achieve high-quality face animation by leveraging large-scale datasets of multiple identities. However, such generic models usually fail to synthesize unique identity-specific details, since they learn a general domain prior. To adapt to specific subjects, we find that it is still challenging to capture high-frequency facial details via popular solutions like low-rank adaptation (LoRA). This motivates us to propose a specific architecture, a Register Module, that enhances the performance of LoRA, while requiring only a small number of parameters to adapt to an unseen identity. Our module is applied to intermediate features of a pre-trained model, storing and re-purposing information in a learnable 3D feature space. To demonstrate the efficacy of our personalization method, we collect a dataset of talking videos of individuals with distinctive facial details, such as wrinkles and tattoos. Our approach faithfully captures unseen faces, outperforming existing methods quantitatively and qualitatively. We will release the code, models, and dataset to the public.</p>
+                <p style="text-align: justify">We introduce a novel method for low-rank personalization of a generic model for head avatar generation. Prior work proposes generic models that achieve high-quality face animation by leveraging large-scale datasets of multiple identities. However, such generic models usually fail to synthesize unique identity-specific details, since they learn a general domain prior. To adapt to specific subjects, we find that it is still challenging to capture high-frequency facial details via popular solutions like low-rank adaptation (LoRA). This motivates us to propose a specific architecture, a Register Module, that enhances the performance of LoRA, while requiring only a small number of parameters to adapt to an unseen identity. Our module is applied to intermediate features of a pre-trained model, storing and re-purposing information in a learnable 3D feature space. To demonstrate the efficacy of our personalization method, we collect a dataset of talking videos of individuals with distinctive facial details, such as wrinkles and tattoos. Our approach faithfully captures unseen faces, outperforming existing methods quantitatively and qualitatively. We will release the code, models, and dataset to the public.</p>
 
             </td>
         </tr>
     </table>
     <br>
+    <hr>
     <table align=center width=1024px>
        <center><h1>Method</h1></center>
         <tr>
             <td><img style="width:1024px;" src="full_diagram_simplified.png">
                 <br></br>
-                <p style="text-align: center"><b>Overview of our method</b> Illustration of our Register Module in a generic avatar animation model. During adaptation, we pass the source image's DINOv2 features <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <p style="text-align: justify"> <b>Illustration of our Register Module in a generic avatar animation model.</b> During adaptation, we pass the source image's DINOv2 features <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
   <mmultiscripts>
     <mi>f</mi>
     <mi>dense</mi>   <!-- subscript -->
