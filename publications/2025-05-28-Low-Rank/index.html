@@ -245,9 +245,25 @@
         </tr>
     </table>
     <br>
-
+    <table align=center width=1024px>
+       <center><h1>Method</h1></center>
+        <tr>
+            <td><img style="width:1024px;" src="full_diagram_simplified.png">
+                <br></br>
+                <b>Overview of our method</b> Illustration of our Register Module in a generic avatar animation model. During adaptation, we pass the source image's DINOv2 features <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+  <msub>
+    <msup>
+      <mi>f</mi>
+      <mi>src</mi>
+    </msup>
+    <mi>dense</mi>
+  </msub>
+</math> and driving image's 3DMM parameters to our module. Our module teaches the model to attend to specific regions in the dense DINOv2 features, thus providing better learning signals for LoRA to capture identity-specific details. Note that the Register Module is not needed during inference but serves as the register during LoRA training.
+            </td>
+        </tr>
+    </table>
   <hr>
-    <center><h1>Video</h1></center>
+    <center><h1>Demo</h1></center>
      <p align="center">
         <iframe width="660" height="395" src="https://www.youtube.com/embed/0h55tpwvDBw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen align="center"></iframe>
     </p>
