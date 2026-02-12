@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine? 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 60px 80px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #e91e63;
+            font-size: 3em;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            position: relative;
+            min-height: 100px;
+            margin-top: 40px;
+        }
+
+        .buttons-row {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            padding: 20px 50px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        #yesBtn:hover {
+            transform: scale(0.7);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        #yesBtn.shrinking {
+            transform: scale(0.5);
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #666;
+        }
+
+        #noBtn.evading {
+            position: fixed;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Seriously screen */
+        .seriously-screen {
+            text-align: center;
+        }
+
+        .seriously-screen h2 {
+            color: #e91e63;
+            font-size: 4em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .seriously-screen img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        #acknowledgeBtn {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+        }
+
+        #acknowledgeBtn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Success screen */
+        .success-screen {
+            text-align: center;
+        }
+
+        .success-screen h1 {
+            color: #e91e63;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Question Screen -->
+        <div id="questionScreen">
+            <h1>Will you be my Valentine? 💕</h1>
+            <div class="button-container" id="buttonContainer">
+                <div class="buttons-row">
+                    <button id="yesBtn">Yes! 💖</button>
+                    <button id="noBtn">No</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seriously Screen -->
+        <div id="seriouslyScreen" class="seriously-screen hidden">
+            <h2>Seriously?</h2>
+            <img src="https://media1.tenor.com/m/dhuQV_msfiUAAAAd/cat-gun.gif" alt="Cat with gun" style="max-width: 400px; height: auto;">
+            <br>
+            <button id="acknowledgeBtn">OK, OK... 😅</button>
+        </div>
+
+        <!-- Success Screen -->
+        <div id="successScreen" class="success-screen hidden">
+            <h1 style="font-size: 4em; margin-bottom: 20px;">THANKS!! 😍😍😍</h1>
+            <p style="font-size: 1.8em; color: #666; line-height: 1.8;">
+                Please send me a text!<br>
+                You can close this tab now.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const questionScreen = document.getElementById('questionScreen');
+        const seriouslyScreen = document.getElementById('seriouslyScreen');
+        const successScreen = document.getElementById('successScreen');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const acknowledgeBtn = document.getElementById('acknowledgeBtn');
+
+        let noAttempts = 0;
+        const maxAttempts = 5;
+        let isEvading = false;
+        let yesClickCount = 0;
+        const requiredYesClicks = 3;
+
+        // Initialize No button position
+        function initNoButton() {
+            noBtn.classList.remove('evading');
+            noBtn.style.position = '';
+            noBtn.style.left = '';
+            noBtn.style.top = '';
+            isEvading = false;
+        }
+
+        initNoButton();
+
+        // Randomly swap Yes and No positions
+        function swapButtons() {
+            const buttonsRow = document.querySelector('.buttons-row');
+            if (Math.random() > 0.5) {
+                buttonsRow.appendChild(yesBtn);
+                buttonsRow.appendChild(noBtn);
+            } else {
+                buttonsRow.appendChild(noBtn);
+                buttonsRow.appendChild(yesBtn);
+            }
+        }
+
+        // Make Yes button jiggle/move slightly
+        function jiggleYesButton() {
+            const randomX = (Math.random() - 0.5) * 10;
+            const randomY = (Math.random() - 0.5) * 10;
+            yesBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(0.7)`;
+            setTimeout(() => {
+                yesBtn.style.transform = '';
+            }, 200);
+        }
+
+        // Shrink Yes button on hover
+        yesBtn.addEventListener('mouseenter', () => {
+            yesBtn.classList.add('shrinking');
+            // Randomly swap positions sometimes
+            if (Math.random() > 0.7) {
+                swapButtons();
+            }
+        });
+
+        yesBtn.addEventListener('mouseleave', () => {
+            yesBtn.classList.remove('shrinking');
+        });
+
+        // Track mouse movement for No button
+        document.addEventListener('mousemove', (e) => {
+            if (questionScreen.classList.contains('hidden')) return;
+
+            const noBtnRect = noBtn.getBoundingClientRect();
+            const noBtnCenterX = noBtnRect.left + noBtnRect.width / 2;
+            const noBtnCenterY = noBtnRect.top + noBtnRect.height / 2;
+
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            // Calculate distance from mouse to button center
+            const deltaX = noBtnCenterX - mouseX;
+            const deltaY = noBtnCenterY - mouseY;
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+            // Less sensitive - only react when mouse is within 80px
+            const threshold = 80;
+            if (distance < threshold) {
+                noAttempts++;
+
+                // Check if we should show the "seriously" screen
+                if (noAttempts >= maxAttempts) {
+                    questionScreen.classList.add('hidden');
+                    seriouslyScreen.classList.remove('hidden');
+                    noAttempts = 0;
+                    return;
+                }
+
+                // Make button evading if not already
+                if (!isEvading) {
+                    noBtn.classList.add('evading');
+                    isEvading = true;
+                }
+
+                // Calculate base direction away from cursor
+                const baseDirectionX = deltaX / distance;
+                const baseDirectionY = deltaY / distance;
+
+                // Add randomness to the direction while keeping it away from cursor
+                // Random angle between -60 and +60 degrees from the base direction
+                const randomAngle = (Math.random() - 0.5) * (Math.PI / 1.5); // ±60 degrees in radians
+                
+                const directionX = baseDirectionX * Math.cos(randomAngle) - baseDirectionY * Math.sin(randomAngle);
+                const directionY = baseDirectionX * Math.sin(randomAngle) + baseDirectionY * Math.cos(randomAngle);
+
+                // Move button away with some randomness in distance
+                const moveDistance = 150 + Math.random() * 100; // Random between 150-250px
+                
+                let newLeft = noBtnCenterX + (directionX * moveDistance) - noBtnRect.width / 2;
+                let newTop = noBtnCenterY + (directionY * moveDistance) - noBtnRect.height / 2;
+
+                // Define boundaries with padding
+                const padding = 20;
+                const minLeft = padding;
+                const maxLeft = window.innerWidth - noBtnRect.width - padding;
+                const minTop = padding;
+                const maxTop = window.innerHeight - noBtnRect.height - padding;
+
+                // Clamp to boundaries
+                newLeft = Math.max(minLeft, Math.min(newLeft, maxLeft));
+                newTop = Math.max(minTop, Math.min(newTop, maxTop));
+
+                noBtn.style.left = newLeft + 'px';
+                noBtn.style.top = newTop + 'px';
+            }
+        });
+
+        // Yes button click - requires 3 clicks
+        yesBtn.addEventListener('click', () => {
+            yesClickCount++;
+            jiggleYesButton();
+            
+            if (yesClickCount < requiredYesClicks) {
+                // Update button text to show progress
+                yesBtn.textContent = `Really? (${yesClickCount}/${requiredYesClicks})`;
+                // Swap positions to make it harder
+                swapButtons();
+            } else {
+                // Success after 3 clicks
+                questionScreen.classList.add('hidden');
+                successScreen.classList.remove('hidden');
+                yesClickCount = 0;
+                yesBtn.textContent = 'Yes! 💖';
+            }
+        });
+
+        // Acknowledge button - go back to main screen
+        acknowledgeBtn.addEventListener('click', () => {
+            seriouslyScreen.classList.add('hidden');
+            questionScreen.classList.remove('hidden');
+            noAttempts = 0;
+            yesClickCount = 0;
+            yesBtn.textContent = 'Yes! 💖';
+            initNoButton();
+        });
+    </script>
+</body>
+</html>
